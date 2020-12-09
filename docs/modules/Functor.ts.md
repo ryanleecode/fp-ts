@@ -1,6 +1,6 @@
 ---
 title: Functor.ts
-nav_order: 32
+nav_order: 31
 parent: Modules
 ---
 
@@ -42,7 +42,7 @@ Added in v2.0.0
 ```ts
 export interface Functor<F> {
   readonly URI: F
-  readonly map: <A, B>(fa: HKT<F, A>, f: (a: A) => B) => HKT<F, B>
+  readonly map: <A, B>(f: (a: A) => B) => (fa: HKT<F, A>) => HKT<F, B>
 }
 ```
 
@@ -55,7 +55,7 @@ Added in v2.0.0
 ```ts
 export interface Functor1<F extends URIS> {
   readonly URI: F
-  readonly map: <A, B>(fa: Kind<F, A>, f: (a: A) => B) => Kind<F, B>
+  readonly map: <A, B>(f: (a: A) => B) => (fa: Kind<F, A>) => Kind<F, B>
 }
 ```
 
@@ -68,7 +68,7 @@ Added in v2.0.0
 ```ts
 export interface Functor2<F extends URIS2> {
   readonly URI: F
-  readonly map: <E, A, B>(fa: Kind2<F, E, A>, f: (a: A) => B) => Kind2<F, E, B>
+  readonly map: <A, B>(f: (a: A) => B) => <E>(fa: Kind2<F, E, A>) => Kind2<F, E, B>
 }
 ```
 
@@ -81,7 +81,7 @@ Added in v2.0.0
 ```ts
 export interface Functor2C<F extends URIS2, E> {
   readonly URI: F
-  readonly map: <A, B>(fa: Kind2<F, E, A>, f: (a: A) => B) => Kind2<F, E, B>
+  readonly map: <A, B>(f: (a: A) => B) => (fa: Kind2<F, E, A>) => Kind2<F, E, B>
 }
 ```
 
@@ -94,7 +94,7 @@ Added in v2.0.0
 ```ts
 export interface Functor3<F extends URIS3> {
   readonly URI: F
-  readonly map: <R, E, A, B>(fa: Kind3<F, R, E, A>, f: (a: A) => B) => Kind3<F, R, E, B>
+  readonly map: <A, B>(f: (a: A) => B) => <R, E>(fa: Kind3<F, R, E, A>) => Kind3<F, R, E, B>
 }
 ```
 
@@ -107,7 +107,7 @@ Added in v2.0.0
 ```ts
 export interface Functor3C<F extends URIS3, E> {
   readonly URI: F
-  readonly map: <R, A, B>(fa: Kind3<F, R, E, A>, f: (a: A) => B) => Kind3<F, R, E, B>
+  readonly map: <A, B>(f: (a: A) => B) => <R>(fa: Kind3<F, R, E, A>) => Kind3<F, R, E, B>
 }
 ```
 
@@ -120,7 +120,7 @@ Added in v2.2.0
 ```ts
 export interface Functor4<F extends URIS4> {
   readonly URI: F
-  readonly map: <S, R, E, A, B>(fa: Kind4<F, S, R, E, A>, f: (a: A) => B) => Kind4<F, S, R, E, B>
+  readonly map: <A, B>(f: (a: A) => B) => <S, R, E>(fa: Kind4<F, S, R, E, A>) => Kind4<F, S, R, E, B>
 }
 ```
 
